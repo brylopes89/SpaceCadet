@@ -7,14 +7,14 @@ public class Enemy_Controller : MonoBehaviour
     public Transform _firePoint;
     public GameObject _playerShip;
     public GameObject _bulletPrefab;
-    public Vector3 _target;
+    private Vector3 _target;
     [HideInInspector]
     public int _numBullets;
 
     private bool _withinDistance;  
 
-    private float _rotationSpeed = 1.5f;
-    private float _moveSpeed = 12f;    
+    private float _rotationSpeed = 2;
+    private float _moveSpeed = 20f;    
     private float _maxDist;
     private float _time = 0;
 
@@ -29,13 +29,13 @@ public class Enemy_Controller : MonoBehaviour
         _playerShip = GameObject.FindWithTag("Player");
         _target = _playerShip.transform.position;
 
-        _numBullets = Quiz_Manager._instance._multoperand2;   
-        _maxDist = Random.Range(29f, 32f);     
+        _numBullets = Quiz_Manager._instance._multoperand2;
+        _maxDist = 28;//Random.Range(28f, 30f);     
 
         _changeTarget = false;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {          
         if (_changeTarget)
         {
@@ -48,10 +48,10 @@ public class Enemy_Controller : MonoBehaviour
 
         if (IsPlayerWithinApproachRange())
         {
-            if(_changeTarget)
+            if (_changeTarget)
                 Destroy(this.gameObject);
             else
-                StartCoroutine(ApproachSpeed());
+                _moveSpeed = 0f;//StartCoroutine(ApproachSpeed());
         }                    
 
         HandleAttack();
@@ -64,6 +64,7 @@ public class Enemy_Controller : MonoBehaviour
         if (_bullets.Count >= 2)
         {
             StartCoroutine(ChangeTarget());
+            //_changeTarget = true;
             _underAttackController._startAttack = false;
             return;
         }
@@ -71,7 +72,7 @@ public class Enemy_Controller : MonoBehaviour
         if (!_underAttackController._startAttack)
             return;        
 
-        _time += Time.fixedDeltaTime;
+        _time += Time.deltaTime;
         if (_time >= .15f)
         {
             _time = 0;
@@ -92,7 +93,8 @@ public class Enemy_Controller : MonoBehaviour
     private IEnumerator ChangeTarget()
     {       
         yield return new WaitForSeconds(2f);
-        _changeTarget = true;       
+        _changeTarget = true;        
+        _moveSpeed = 20f;
     }
 
     void MoveTowards()
@@ -100,19 +102,20 @@ public class Enemy_Controller : MonoBehaviour
         var lookPos = _target - transform.position;
 
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookPos), _rotationSpeed * Time.deltaTime);
-        transform.position += transform.forward * _moveSpeed * Time.fixedDeltaTime;
+        transform.position += transform.forward * _moveSpeed * Time.deltaTime;
     }
 
     bool IsPlayerWithinApproachRange()
     {
         var distance = (_target - transform.position).magnitude;
+       // Debug.Log(distance);
         return distance < _maxDist;
     }
 
     IEnumerator ApproachSpeed()
     {               
         float newSpeed = 0.0f;
-        float time = 0.8f;        
+        float time = .5f;        
         float i = 0.0f;
         float rate = (1 / time);
 
@@ -124,7 +127,7 @@ public class Enemy_Controller : MonoBehaviour
             if (ratio > 1.0f)//reaches %100
             {
                 _withinDistance = true;
-                _moveSpeed = 17f;
+                _moveSpeed = 20f;
 
                 //yield return new WaitForSeconds(.5f);
                 //HandleAttack();

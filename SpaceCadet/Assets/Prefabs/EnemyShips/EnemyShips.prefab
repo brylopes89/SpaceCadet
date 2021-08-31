@@ -46,5 +46,5 @@ MonoBehaviour:
   ships:
   - {fileID: 122512647565701658, guid: 23d7e3833732c514896d40575abf5b43, type: 3}
   _randomShip: 
-  _spawnRange: {x: 30, y: 20, z: 10}
+  _spawnRange: {x: 14.26, y: 20, z: 10}
   _seed: 0

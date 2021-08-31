@@ -60,7 +60,7 @@ public class HealthBar_Controller : MonoBehaviour
         var _emission = _thrusters.emission;
         var _velocityOL = _thrusters.velocityOverLifetime;
         _emission.rateOverTime = 100;
-        _velocityOL.speedModifier = 5f;
+        _velocityOL.speedModifier = 12.5f;
 
         if (_shieldHealthBar.value <= 67f)
         {

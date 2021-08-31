@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 13c3c39f257aa2f408ed6c5d9620690b, type: 2}
+  - {fileID: 2100000, guid: 3691294e4be080144a8985b4cc336eb3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,9 +114,7 @@ MonoBehaviour:
   _playerShip: {fileID: 0}
   _bulletPrefab: {fileID: 2878980818685878040, guid: ff6e1706906b79343b32289bba19d120,
     type: 3}
-  _target: {x: 0, y: 0, z: 0}
   _numBullets: 0
-  moveSpeed: 12
 --- !u!1 &4769332734976758317
 GameObject:
   m_ObjectHideFlags: 0
