@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5756300179847977394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5756300179847977392}
+  - component: {fileID: 5756300179847977393}
+  m_Layer: 0
+  m_Name: Crash_Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5756300179847977392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756300179847977394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20.271568, y: 0.9235167, z: 16.887081}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5756300179847977393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756300179847977394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a94ec548a9fce7b438e962f860e46800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timer: {fileID: 0}
+  _crystalController: {fileID: 0}
+  _panelAnimator: {fileID: 0}
+  _generatorAnim: {fileID: 0}
+  _generatorLidAnim: {fileID: 0}
+  _inputField: {fileID: 0}
+  _inputText: {fileID: 0}
+  _equationText: {fileID: 0}
+  _problemText: {fileID: 0}
+  _statusText: {fileID: 0}
+  _screenPrompt: {fileID: 0}
+  _answerButton: {fileID: 0}
+  _colorIndicators:
+  - {fileID: 21300000, guid: 3fc048deb9b3ed04095ceb0f1f286478, type: 3}
+  - {fileID: 21300000, guid: 4714e8a7f26b68245bdeefb2432020c1, type: 3}
+  - {fileID: 21300000, guid: 19da6f529f16465458c5df5931f241aa, type: 3}
+  - {fileID: 21300000, guid: 6c723b68685b2f94d94b669322195e6a, type: 3}
+  _amountNeeded: 10
+  _numberCorrect: 0
+  _success: 0
+  _currentHealth: 0
+  _initiateNextSequence: 0
+  _firstActivated: 0
