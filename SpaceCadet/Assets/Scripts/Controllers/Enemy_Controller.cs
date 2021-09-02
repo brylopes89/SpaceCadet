@@ -30,7 +30,7 @@ public class Enemy_Controller : MonoBehaviour
         _target = _playerShip.transform.position;
 
         _numBullets = Quiz_Manager._instance._multoperand2;
-        _maxDist = 28;//Random.Range(28f, 30f);     
+        _maxDist = 38;//Random.Range(28f, 30f);     
 
         _changeTarget = false;
     }

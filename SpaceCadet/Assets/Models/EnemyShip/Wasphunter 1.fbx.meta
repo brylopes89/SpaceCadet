@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 516395837fd9ea5479884b245bb08e88
+guid: b41dac6200e21ff4fbcb601922123d0b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Default OBJ
-    second: {fileID: 2100000, guid: 8a015bebfa3121a46b967a1ee891d9f6, type: 2}
+      name: WaspMat
+    second: {fileID: 2100000, guid: 734e51f59a15b4f4baf4138df12cb041, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
