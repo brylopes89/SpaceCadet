@@ -69,10 +69,10 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
         }
         else
         {
-            
+            GameManager._instance.LoadGame();
         }
 
-        GameManager._instance.LoadGame();
+        
     }
 
     private void Start()

@@ -30,7 +30,7 @@ public class Enemy_Controller : MonoBehaviour
         _target = _playerShip.transform.position;
 
         _numBullets = Quiz_Manager._instance._multoperand2;
-        _maxDist = 38;//Random.Range(28f, 30f);     
+        _maxDist = 30;//Random.Range(28f, 30f);     
 
         _changeTarget = false;
     }
@@ -55,6 +55,21 @@ public class Enemy_Controller : MonoBehaviour
         }                    
 
         HandleAttack();
+    }   
+
+    void MoveTowards()
+    {
+        var lookPos = _target - transform.position;
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookPos), _rotationSpeed * Time.deltaTime);
+        transform.position += transform.forward * _moveSpeed * Time.deltaTime;
+    }
+
+    bool IsPlayerWithinApproachRange()
+    {
+        var distance = (_target - transform.position).magnitude;
+       // Debug.Log(distance);
+        return distance < _maxDist;
     }
 
     private void HandleAttack()
@@ -70,7 +85,7 @@ public class Enemy_Controller : MonoBehaviour
         }
 
         if (!_underAttackController._startAttack)
-            return;        
+            return;
 
         _time += Time.deltaTime;
         if (_time >= .15f)
@@ -80,36 +95,21 @@ public class Enemy_Controller : MonoBehaviour
 
         if (_time == 0)
         {
-            GameObject _bulletClone = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);            
+            GameObject _bulletClone = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
             _bullets.Add(_bulletClone);
 
             for (int x = 0; x < _enemyShipColliders.Length; x++)
             {
                 Physics.IgnoreCollision(_bulletClone.transform.GetComponent<Collider>(), _enemyShipColliders[x]);
-            }     
+            }
         }
     }
 
     private IEnumerator ChangeTarget()
-    {       
+    {
         yield return new WaitForSeconds(2f);
-        _changeTarget = true;        
+        _changeTarget = true;
         _moveSpeed = 20f;
-    }
-
-    void MoveTowards()
-    {
-        var lookPos = _target - transform.position;
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookPos), _rotationSpeed * Time.deltaTime);
-        transform.position += transform.forward * _moveSpeed * Time.deltaTime;
-    }
-
-    bool IsPlayerWithinApproachRange()
-    {
-        var distance = (_target - transform.position).magnitude;
-       // Debug.Log(distance);
-        return distance < _maxDist;
     }
 
     IEnumerator ApproachSpeed()
