@@ -69,16 +69,15 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
         }
         else
         {
-            
+            GameManager._instance.LoadGame();
         }
-
-        GameManager._instance.LoadGame();
+        
     }
 
     private void Start()
     {
         _colorPanel = _timerDisplayText.gameObject.GetComponentInParent<Image>();
-        _colorPanel.sprite = _colorIndicators[1];
+        _colorPanel.sprite = _colorIndicators[2];
 
         _initiateNextSequence = true;
         _timerAnimator.SetTrigger("Activate");
@@ -124,7 +123,7 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
     {
         if (!_timer._startTimer && !_initiateNextSequence)
         {
-            _timerDisplayText.text = "Please Wait";
+            _timerDisplayText.text = "Please Stand By";
             return;
         }  
 
@@ -153,7 +152,6 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
         {
             _success = false;
             _inputField.text = Quiz_Manager._instance._correctAnswer.ToString();
-            _statusText.text = "INCORRECT!";         
 
             StartCoroutine(InitiateChase());            
         }
@@ -161,7 +159,6 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
         {            
             _success = true;
             _crystalController.CollectCrystals();
-            _statusText.text = "CORRECT!";    
             
             _numberCorrect++;
 
@@ -190,14 +187,23 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
 
         yield return new WaitForSeconds(_generatorLidAnim.GetCurrentAnimatorStateInfo(0).length);
 
-        _generatorAnim.SetTrigger("Activate");        
+        //_generatorAnim.SetTrigger("Activate");        
 
-        if(_success)
+        if (_success)
+        {
             _generatorAnim.SetTrigger("Success");
-        else
-            _generatorAnim.SetTrigger("Fail");
+            yield return new WaitForSeconds(.4f);
+            _statusText.text = "CORRECT!";
+        }
 
-        yield return new WaitForSeconds(6f);
+        else
+        {
+            _generatorAnim.SetTrigger("Fail");
+            yield return new WaitForSeconds(.4f);
+            _statusText.text = "INCORRECT!";
+        }
+
+        yield return new WaitForSeconds(3f);
 
         ResetValues();
     }   

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4837221748501183175}
   - component: {fileID: 4837221748501183169}
   - component: {fileID: 4837221748501183168}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4885,7 +4885,7 @@ GameObject:
   - component: {fileID: 4837221749694753077}
   - component: {fileID: 4837221749694753079}
   - component: {fileID: 4837221749694753078}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FireEmbers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9611,7 +9611,7 @@ GameObject:
   - component: {fileID: 5171221983977353870}
   - component: {fileID: 5004208319847781940}
   - component: {fileID: 4976220815531071942}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14485,7 +14485,7 @@ GameObject:
   - component: {fileID: 5171221982752738318}
   - component: {fileID: 5004208322737334376}
   - component: {fileID: 4976220810271675122}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FlamesParticleEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19106,7 +19106,7 @@ GameObject:
   - component: {fileID: 5171221987456241800}
   - component: {fileID: 5004208323131339210}
   - component: {fileID: 4976220813066411180}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FireEmbers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23832,8 +23832,8 @@ GameObject:
   - component: {fileID: 6109570037981925282}
   - component: {fileID: 6230967158578129860}
   - component: {fileID: 6198436452544876894}
-  m_Layer: 0
-  m_Name: FlamesParticleEnemy (1)
+  m_Layer: 7
+  m_Name: FlamesParticleEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28451,7 +28451,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6614979586496941058}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28482,7 +28482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7453134834900585027}
   - component: {fileID: 2054150411612456637}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wasphunter
   m_TagString: EnemyShip
   m_Icon: {fileID: 0}
@@ -28532,9 +28532,9 @@ GameObject:
   - component: {fileID: 9188110473039524469}
   - component: {fileID: 4566077519989696025}
   - component: {fileID: 1781455153806774995}
-  - component: {fileID: 268523237336331008}
+  - component: {fileID: 21624631996887718}
   - component: {fileID: 6596646218935212305}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wasphunter
   m_TagString: EnemyShip
   m_Icon: {fileID: 0}
@@ -28585,7 +28585,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 13c3c39f257aa2f408ed6c5d9620690b, type: 2}
+  - {fileID: 2100000, guid: 3691294e4be080144a8985b4cc336eb3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28607,8 +28607,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &268523237336331008
-MeshCollider:
+--- !u!65 &21624631996887718
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -28617,10 +28617,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7873464961823878120, guid: b41dac6200e21ff4fbcb601922123d0b, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 46.516438, y: 32.952854, z: 30.885098}
+  m_Center: {x: -1.762692, y: 2.321783, z: 0.00002622605}
 --- !u!54 &6596646218935212305
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -28629,11 +28628,11 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8415373274051078351}
   serializedVersion: 2
-  m_Mass: 5
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_Mass: 1
+  m_Drag: 50
+  m_AngularDrag: 5
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0

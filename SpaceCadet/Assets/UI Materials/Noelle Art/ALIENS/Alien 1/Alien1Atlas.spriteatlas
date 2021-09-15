@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Alien1Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: b59d7ed560ccc9744820c3fd7dea808c, type: 3}
+    - {fileID: 2800000, guid: 0a16607059ef75640b6b795ae19f2faf, type: 3}
+    - {fileID: 2800000, guid: 6f28211f8c7d163419c5df6b52f44987, type: 3}
+    - {fileID: 2800000, guid: 11af0eb3d2ac26c488e42ba17260fc8e, type: 3}
+    - {fileID: 2800000, guid: b7603997d5d45de4ab9ad291889015e3, type: 3}
+    - {fileID: 2800000, guid: c3426a149cf7d74499e2574f440259b5, type: 3}
+    - {fileID: 2800000, guid: 0111f4d88dbb4854b9be4825245e5ac8, type: 3}
+    - {fileID: 2800000, guid: 6768a18fbf7df5449a42005b3ea9e7ba, type: 3}
+    - {fileID: 2800000, guid: e213ac97912404744919d40e0a2f8603, type: 3}
+    - {fileID: 2800000, guid: 27ede0b181691d943ac4a89eba72b053, type: 3}
+    - {fileID: 2800000, guid: d77a62ccd217fb24e9e4fa03a34ed0cd, type: 3}
+    - {fileID: 2800000, guid: 3c1eae14f87e80144bc326beb86fb623, type: 3}
+    - {fileID: 2800000, guid: 1d282ac54afdaec4d954f4f7d1961737, type: 3}
+    - {fileID: 2800000, guid: 2ab25adb6f753da4b81949207f99b24c, type: 3}
+    - {fileID: 2800000, guid: 29400306982d320458fb802b6403567b, type: 3}
+    - {fileID: 2800000, guid: dbd68522d89535e4eb2fe45009fc067b, type: 3}
+    - {fileID: 2800000, guid: 9077d568de3efe04daaa558f25f33e10, type: 3}
+    - {fileID: 2800000, guid: 94854b746e187864283a59112120cc1d, type: 3}
+    - {fileID: 2800000, guid: 0cef7517c4ce0854793129410a43f23f, type: 3}
+    - {fileID: 2800000, guid: 08549a99fe8a56044bbec5dc07fe46c5, type: 3}
+    - {fileID: 2800000, guid: 2ea9d7d80d15f974b9e43bb860e7f0a9, type: 3}
+    totalSpriteSurfaceArea: 68296704
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 0a16607059ef75640b6b795ae19f2faf, type: 3}
+  - {fileID: 21300000, guid: 27ede0b181691d943ac4a89eba72b053, type: 3}
+  - {fileID: 21300000, guid: dbd68522d89535e4eb2fe45009fc067b, type: 3}
+  - {fileID: 21300000, guid: 11af0eb3d2ac26c488e42ba17260fc8e, type: 3}
+  - {fileID: 21300000, guid: c3426a149cf7d74499e2574f440259b5, type: 3}
+  - {fileID: 21300000, guid: 3c1eae14f87e80144bc326beb86fb623, type: 3}
+  - {fileID: 21300000, guid: 94854b746e187864283a59112120cc1d, type: 3}
+  - {fileID: 21300000, guid: 1d282ac54afdaec4d954f4f7d1961737, type: 3}
+  - {fileID: 21300000, guid: b59d7ed560ccc9744820c3fd7dea808c, type: 3}
+  - {fileID: 21300000, guid: 29400306982d320458fb802b6403567b, type: 3}
+  - {fileID: 21300000, guid: 0cef7517c4ce0854793129410a43f23f, type: 3}
+  - {fileID: 21300000, guid: b7603997d5d45de4ab9ad291889015e3, type: 3}
+  - {fileID: 21300000, guid: e213ac97912404744919d40e0a2f8603, type: 3}
+  - {fileID: 21300000, guid: 9077d568de3efe04daaa558f25f33e10, type: 3}
+  - {fileID: 21300000, guid: 0111f4d88dbb4854b9be4825245e5ac8, type: 3}
+  - {fileID: 21300000, guid: 2ea9d7d80d15f974b9e43bb860e7f0a9, type: 3}
+  - {fileID: 21300000, guid: 08549a99fe8a56044bbec5dc07fe46c5, type: 3}
+  - {fileID: 21300000, guid: 2ab25adb6f753da4b81949207f99b24c, type: 3}
+  - {fileID: 21300000, guid: d77a62ccd217fb24e9e4fa03a34ed0cd, type: 3}
+  - {fileID: 21300000, guid: 6f28211f8c7d163419c5df6b52f44987, type: 3}
+  - {fileID: 21300000, guid: 6768a18fbf7df5449a42005b3ea9e7ba, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Alien 1_00001
+  - Alien 1_00009
+  - Alien 1_00015
+  - Alien 1_00003
+  - Alien 1_00005
+  - Alien 1_00011
+  - Alien 1_00017
+  - Alien 1_00012
+  - Alien 1_00000
+  - Alien 1_00014
+  - Alien 1_00018
+  - Alien 1_00004
+  - Alien 1_00008
+  - Alien 1_00016
+  - Alien 1_00006
+  - Alien 1_00020
+  - Alien 1_00019
+  - Alien 1_00013
+  - Alien 1_00010
+  - Alien 1_00002
+  - Alien 1_00007
+  m_RenderDataMap: {}
+  m_Tag: Alien1Atlas
+  m_IsVariant: 0

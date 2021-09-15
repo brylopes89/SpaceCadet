@@ -7,15 +7,18 @@ public class RandomAlien : MonoBehaviour
     [SerializeField]
     private GameObject[] _aliens;
 
-    public int _seed;
-
-    private void Awake()
-    {
-        Random.InitState(_seed);
-    }
+    public int _index;
 
     void Start()
     {
-        _aliens[Random.Range(0, _aliens.Length)].SetActive(true);
+        _index = PlayerPrefs.GetInt("AlienIndex");
+
+        if (_index >= 3)
+            _index = 0;
+
+        _aliens[_index].SetActive(true);
+
+        _index++;
+        PlayerPrefs.SetInt("AlienIndex", _index);
     }
 }

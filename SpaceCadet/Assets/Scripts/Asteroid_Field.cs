@@ -5,36 +5,38 @@ using UnityEngine;
 public class Asteroid_Field : MonoBehaviour
 {
     [SerializeField]
-    private Queue<GameObject> _asteroidPool = new Queue<GameObject>();
-    [SerializeField]
     private GameObject[] _asteroids;
     [SerializeField]
     private int _asteroidPoolSize;
     [SerializeField]
     private int[] _randomAsteroid;
-    public Vector3 _spawnRange;
+    [SerializeField]
+    private Vector3 _spawnRange;
     [SerializeField]
     private float[] _speedRange;
     [SerializeField]
     private int _seed;
 
-    //private GameObject[] _asteroidClones;
+    private Vector3 _spawnPosition;
+
+    private Queue<GameObject> _asteroidPool = new Queue<GameObject>();
+    [HideInInspector]
     public List<GameObject> _objects = new List<GameObject>();
 
-    [SerializeField]
-    private float _timeToSpawn = 30f;
-    
-    public float _timeSinceSpawn;
 
     void Start()
     {
         _randomAsteroid = new int[_asteroidPoolSize];
         _speedRange = new float[_asteroidPoolSize];
-        //_asteroidClones = new GameObject[_asteroidPoolSize];
-
         Random.InitState(_seed);
 
+        _spawnPosition = new Vector3(transform.position.x + Random.Range(-_spawnRange.x, _spawnRange.x),
+                                                                    transform.position.y + Random.Range(-_spawnRange.y, _spawnRange.y),
+                                                                    transform.position.z + Random.Range(-_spawnRange.z, _spawnRange.z));
+
+
         InstantiateAsteroids();
+
     }
 
     private void InstantiateAsteroids()
@@ -43,6 +45,9 @@ public class Asteroid_Field : MonoBehaviour
         {
             _randomAsteroid[i] = Random.Range(0, _asteroids.Length);
             _speedRange[i] = Random.Range(12, 25);
+
+
+
             GameObject _asteroidClone = Instantiate(_asteroids[_randomAsteroid[i]], new Vector3(transform.position.x + Random.Range(-_spawnRange.x, _spawnRange.x),
                                                                     transform.position.y + Random.Range(-_spawnRange.y, _spawnRange.y),
                                                                     transform.position.z + Random.Range(-_spawnRange.z, _spawnRange.z)), Quaternion.identity);
@@ -51,41 +56,41 @@ public class Asteroid_Field : MonoBehaviour
 
             _asteroidPool.Enqueue(_asteroidClone);
             _objects.Add(_asteroidClone);
+
+            //
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if(_objects.Count < _asteroidPoolSize)
-        {
-            NewAsteroidClones();
-        }
+        //
+        if (_objects.Count < _asteroidPoolSize)
+            StartCoroutine(GetNewAsteroid());
+
     }
 
-    public void NewAsteroidClones()
+    private IEnumerator GetNewAsteroid()
     {
-        GameObject _asteroidClone = GetAsteroid();
-        _asteroidClone.transform.position = new Vector3(transform.position.x + Random.Range(-_spawnRange.x, _spawnRange.x),
-                                                            transform.position.y + Random.Range(-_spawnRange.y, _spawnRange.y),
-                                                            transform.position.z + Random.Range(-_spawnRange.z, _spawnRange.z));
-        _asteroidClone.transform.parent = this.transform;
-        _asteroidClone.GetComponent<Rigidbody>().velocity = transform.forward * _speedRange[Random.Range(8, 15)];
-        _objects.Add(_asteroidClone);
+        yield return new WaitForSeconds(.2f);
+        GetAsteroid();
     }
 
     public GameObject GetAsteroid()
-    {   
+    {
         if (_asteroidPool.Count > 0)
         {
             GameObject _asteroid = _asteroidPool.Dequeue();
             _asteroid.SetActive(true);
+            _asteroid.transform.position = new Vector3(transform.position.x + Random.Range(-_spawnRange.x, _spawnRange.x),
+                                                                    transform.position.y + Random.Range(-_spawnRange.y, _spawnRange.y),
+                                                                    transform.position.z + Random.Range(-_spawnRange.z, _spawnRange.z));
+            _asteroid.transform.rotation = Quaternion.identity;
+            _asteroid.GetComponent<Rigidbody>().velocity = transform.forward * _speedRange[Random.Range(8, 15)];
             return _asteroid;
         }
         else
         {
-            GameObject _asteroidClone = Instantiate(_asteroids[_randomAsteroid[Random.Range(0, _randomAsteroid.Length)]], new Vector3(transform.position.x + Random.Range(-_spawnRange.x, _spawnRange.x),
-                                                                    transform.position.y + Random.Range(-_spawnRange.y, _spawnRange.y),
-                                                                    transform.position.z + Random.Range(-_spawnRange.z, _spawnRange.z)), Quaternion.identity);
+            GameObject _asteroidClone = Instantiate(_asteroids[_randomAsteroid[Random.Range(0, _randomAsteroid.Length)]], _spawnPosition, Quaternion.identity);
             _asteroidClone.GetComponent<Rigidbody>().velocity = transform.forward * _speedRange[Random.Range(8, 15)];
             _asteroidClone.transform.parent = this.transform;
             _objects.Add(_asteroidClone);

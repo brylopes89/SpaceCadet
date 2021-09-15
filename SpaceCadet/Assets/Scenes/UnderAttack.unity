@@ -354,16 +354,16 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: d1cec1c8bf152b348995a2f13adb5619, type: 3}
     m_FontSize: 65
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 6
     m_MaxSize: 97
     m_Alignment: 1
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: READY
+  m_Text: 
 --- !u!222 &112588547
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -838,11 +838,11 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: d1cec1c8bf152b348995a2f13adb5619, type: 3}
     m_FontSize: 65
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 6
     m_MaxSize: 97
     m_Alignment: 1
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -5205,10 +5205,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3423a96c9a4a84b92459d80151a6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ships:
-  - {fileID: 7792645760849711353, guid: 91e4b2c64e9f9ed4dbaa2460a63d8373, type: 3}
-  _randomShip: 
+  _shipPrefab: {fileID: 7792645760849711353, guid: 91e4b2c64e9f9ed4dbaa2460a63d8373,
+    type: 3}
   _spawnRange: {x: 14.26, y: 20, z: 10}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
   _seed: 0
 --- !u!1 &210252382947857662
 GameObject:
@@ -6284,6 +6286,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100708006112569627, guid: 57542acae506b984fb3f2167aceecc2b,
+        type: 3}
+      propertyPath: _asteroidPoolSize
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57542acae506b984fb3f2167aceecc2b, type: 3}
@@ -8395,7 +8402,7 @@ PrefabInstance:
     - target: {fileID: 9117809529518442931, guid: 1235892fafca800429aa9927fcd2c978,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9117809529518442932, guid: 1235892fafca800429aa9927fcd2c978,
         type: 3}

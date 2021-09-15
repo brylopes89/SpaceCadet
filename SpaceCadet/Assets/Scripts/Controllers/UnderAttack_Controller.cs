@@ -12,13 +12,13 @@ public class UnderAttack_Controller : MonoBehaviour
     [SerializeField]
     private Enemy_Ships _enemyShip;
     [SerializeField]
-    private TimerDisplay _timer;    
+    private TimerDisplay _timer;
 
     [Header("Animators")]
     [SerializeField]
     private Animator _topPanelAnimator;
     [SerializeField]
-    private Animator _timerAnimator;    
+    private Animator _timerAnimator;
 
     [Header("UI")]
     [SerializeField]
@@ -32,14 +32,14 @@ public class UnderAttack_Controller : MonoBehaviour
     [SerializeField]
     private Text _statusText;
     [SerializeField]
-    private Text _timerDisplayText;    
+    private Text _timerDisplayText;
     [SerializeField]
     private Button _answerButton;
 
     [Header("Game Values")]
     [SerializeField]
     private int _amountNeeded;
-    public int _numberCorrect;          
+    public int _numberCorrect;
 
     [HideInInspector]
     public bool _initiateNextSequence;
@@ -55,12 +55,13 @@ public class UnderAttack_Controller : MonoBehaviour
     private string _guess;
     public bool _firstActivated;
     private bool _inFlight;
-    private bool _shieldActivated;    
+    private bool _shieldActivated;
     private bool _submitted;
 
     private Image _colorPanel;
 
-    private void Awake()
+
+    void Start()
     {
         _numberCorrect = PlayerPrefs.GetInt("NumberCorrect");
         _firstActivated = PlayerPrefs.GetInt("FirstActivated") == 1 ? true : false;
@@ -70,14 +71,16 @@ public class UnderAttack_Controller : MonoBehaviour
             _firstActivated = false;
             PlayerPrefs.SetInt("FirstActivated", _firstActivated ? 1 : 0);
         }
-    }
-    void Start()
-    {
-        _initiateNextSequence = true;         
-        _colorPanel = _timerDisplayText.gameObject.GetComponentInParent<Image>();
-        _colorPanel.sprite = _colorIndicators[1];               
+        else
+        {
+            GameManager._instance.ResetData();
+        }
 
-        StartCoroutine(StartFlightCourse());        
+        _initiateNextSequence = true;
+        _colorPanel = _timerDisplayText.gameObject.GetComponentInParent<Image>();
+        _colorPanel.sprite = _colorIndicators[1];
+
+        StartCoroutine(StartFlightCourse());
     }
 
     void Update()
@@ -88,8 +91,8 @@ public class UnderAttack_Controller : MonoBehaviour
         if (!_timer._startTimer)
             _inputField.DeactivateInputField();
 
-        if (Input.GetButtonDown("Jump") && _initiateNextSequence)        
-            StartAttackScene();          
+        if (Input.GetButtonDown("Jump") && _initiateNextSequence)
+            StartAttackScene();
         else if (Input.GetButtonDown("Submit"))
             Submit();
     }
@@ -98,14 +101,14 @@ public class UnderAttack_Controller : MonoBehaviour
     {
         if (_incorrectHigh >= 3 || _incorrectLow >= 3)
         {
-            _problemText.text = "WE'RE GOING DOWN!";         
+            _problemText.text = "WE'RE GOING DOWN!";
         }
 
         else
         {
-            _problemText.text = string.Empty;         
+            _problemText.text = string.Empty;
         }
-            
+
         _success = false;
         _submitted = false;
         _inputField.text = string.Empty;
@@ -118,7 +121,7 @@ public class UnderAttack_Controller : MonoBehaviour
 
     private void StartAttackScene()
     {
-        _timerAnimator.SetTrigger("Deactivate");       
+        _timerAnimator.SetTrigger("Deactivate");
 
         if (_numberCorrect == _amountNeeded)
         {
@@ -127,33 +130,35 @@ public class UnderAttack_Controller : MonoBehaviour
         }
 
         if (_incorrectHigh >= 3 || _incorrectLow >= 3)
-        {            
-            BeginCrashSequence();            
+        {
+            BeginCrashSequence();
             return;
         }
+        _initiateNextSequence = false;
+        StartCoroutine(StartTimer());
+        Quiz_Manager._instance.GetMultiplyQuestion();
+        ResetValues();
+        _answerButton.gameObject.SetActive(true);
 
         if (!_shieldActivated)
         {
             _topPanelAnimator.SetBool("OpenPanel", true);
             _shipController._activateForceField = true;
             _shieldActivated = true;
+            _enemyShip.GenerateEnemyShips();
+        }
+        else
+        {
+            _enemyShip.GetShip();
         }
 
-        StartCoroutine(StartTimer());
-        Quiz_Manager._instance.GetMultiplyQuestion();
-        _initiateNextSequence = false;
-
-        ResetValues();                     
-
-        _answerButton.gameObject.SetActive(true);     
-        _enemyShip.GenerateEnemyShips();        
     }
 
     private void Submit()
     {
         if (!_timer._startTimer)
         {
-            _timerDisplayText.text = "Please Wait";
+            _timerDisplayText.text = "Please Stand By";
             return;
         }
 
@@ -176,7 +181,7 @@ public class UnderAttack_Controller : MonoBehaviour
         _inputField.text = Quiz_Manager._instance._correctAnswer.ToString();
         _inputField.DeactivateInputField();
 
-        StartCoroutine(InitiateAttack());        
+        StartCoroutine(InitiateAttack());
         _answerButton.gameObject.SetActive(false);
 
     }
@@ -187,12 +192,12 @@ public class UnderAttack_Controller : MonoBehaviour
         yield return new WaitForSeconds(5f);
 
         _colorPanel.sprite = _colorIndicators[0];
-        _timer.DisplayTime(_timer._time);        
+        _timer.DisplayTime(_timer._time);
         _inputField.ActivateInputField();
         _inputField.Select();
         _timer._startTimer = true;
 
-        DisplayProblem();       
+        DisplayProblem();
     }
 
     private IEnumerator StartFlightCourse()
@@ -200,15 +205,15 @@ public class UnderAttack_Controller : MonoBehaviour
         _inFlight = true;
         _answerButton.gameObject.SetActive(false);
         yield return new WaitForSeconds(3f);
-        _inFlight = false;        
+        _inFlight = false;
         _timerAnimator.SetTrigger("Activate");
     }
 
     private void DisplayProblem()
     {
         _problemText.text = "There are " + Quiz_Manager._instance._multoperand1 + " PIRATES each firing " + Quiz_Manager._instance._multoperand2 + " missiles! How much energy should we put into our shields?";
-        _equationText.text = Quiz_Manager._instance._multoperand1 + "x" + Quiz_Manager._instance._multoperand2 + " = ";  
-    }       
+        _equationText.text = Quiz_Manager._instance._multoperand1 + "x" + Quiz_Manager._instance._multoperand2 + " = ";
+    }
 
     public IEnumerator InitiateAttack()
     {
@@ -219,21 +224,21 @@ public class UnderAttack_Controller : MonoBehaviour
             _incorrectLow++;
             yield return new WaitForSeconds(2f);
         }
-        
+
         _timer._startTimer = false;
         _startAttack = true;
 
         _colorPanel.sprite = _colorIndicators[3];
         _timerDisplayText.text = "CAUTION";
-        _inputField.text = Quiz_Manager._instance._correctAnswer.ToString();        
+        _inputField.text = Quiz_Manager._instance._correctAnswer.ToString();
 
-        while(_startAttack)
-            yield return null;       
+        while (_startAttack)
+            yield return null;
 
         yield return new WaitForSeconds(5);
 
         _initiateNextSequence = true;
-        ResetValues();       
+        ResetValues();
         _timerAnimator.SetTrigger("Activate");
     }
 
@@ -248,18 +253,18 @@ public class UnderAttack_Controller : MonoBehaviour
     }
 
     private void GuessTooHigh()
-    {        
+    {
         _incorrectHigh++;
         _statusText.text = "INCORRECT!";
-        _problemText.text = "We've overloaded our shields!"; 
-        _shipController._switchHealth = false;      
+        _problemText.text = "We've overloaded our shields!";
+        _shipController._switchHealth = false;
     }
 
     private void GuessTooLow()
     {
         _incorrectLow++;
         _statusText.text = "INCORRECT!";
-        _problemText.text = "We're taking damage to our engines!";    
+        _problemText.text = "We're taking damage to our engines!";
         _shipController._switchHealth = true;
     }
 
@@ -267,21 +272,21 @@ public class UnderAttack_Controller : MonoBehaviour
     {
         _topPanelAnimator.SetBool("OpenPanel", false);
         _statusText.text = "We're all clear cadets. Looks like smooth sailing from here on out.";
-        _timerDisplayText.text = string.Empty;        
+        _timerDisplayText.text = string.Empty;
 
         _colorPanel.sprite = _colorIndicators[1];
         _answerButton.gameObject.SetActive(false);
-        GameManager._instance.ResetData();
+        //GameManager._instance.ResetData();
         StartCoroutine(FadeOutLoader._instance.FadeOut("UnderAttackSuccess"));
-    }    
+    }
 
     private void BeginCrashSequence()
-    {   
+    {
         StartCoroutine(FadeOutLoader._instance.FadeOut("CrashLandingArrival"));
     }
 
     public void AnswerInput(string _answer)
     {
-        _guess = _answer;        
+        _guess = _answer;
     }
 }
