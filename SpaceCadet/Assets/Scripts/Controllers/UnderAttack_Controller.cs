@@ -63,18 +63,21 @@ public class UnderAttack_Controller : MonoBehaviour
 
     void Start()
     {
-        _numberCorrect = PlayerPrefs.GetInt("NumberCorrect");
+        
         _firstActivated = PlayerPrefs.GetInt("FirstActivated") == 1 ? true : false;
 
         if (_firstActivated)
         {
             _firstActivated = false;
+            _numberCorrect = PlayerPrefs.GetInt("NumberCorrect");
             PlayerPrefs.SetInt("FirstActivated", _firstActivated ? 1 : 0);
         }
         else
         {
             GameManager._instance.ResetData();
         }
+
+        
 
         _initiateNextSequence = true;
         _colorPanel = _timerDisplayText.gameObject.GetComponentInParent<Image>();

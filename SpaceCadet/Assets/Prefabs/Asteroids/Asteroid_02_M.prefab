@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5363871881110000930}
   - component: {fileID: 5363871881112900866}
   - component: {fileID: 5363871881111902146}
-  - component: {fileID: 3777309537105006832}
   - component: {fileID: -8910699877006976688}
   - component: {fileID: 3368952062227357825}
+  - component: {fileID: -795039988993194019}
   m_Layer: 0
   m_Name: Asteroid_02_M
   m_TagString: Asteroid
@@ -84,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3777309537105006832
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5363871881109899522}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 70a9041ab85428848898c7cab09a41bc, type: 3}
 --- !u!54 &-8910699877006976688
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,10 +112,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369478bdf8c6efc42b0dc4870e4a4eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats:
-    _maxHealth: 20
-    _currentHealth: 0
-    _damage: 10
-  _explosionPrefab: {fileID: 6304768943698319819, guid: b5b3efad490a80c4a9fc277552297658,
-    type: 3}
-  _field: {fileID: 0}
+  _seed: 0
+--- !u!65 &-795039988993194019
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5363871881109899522}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.747, y: 0.87600005, z: 0.756}
+  m_Center: {x: 0.0018343478, y: -0.030993894, z: -0.017543942}

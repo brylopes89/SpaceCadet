@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         PlayerPrefs.DeleteAll();
         SaveSystem.RemoveFile();
-        Application.Quit();
+        
     }
 
     public void SaveGame()

@@ -11,6 +11,7 @@ TagManager:
   - Asteroid
   - EnemyShip
   - Forcefield
+  - Trigger
   layers:
   - Default
   - TransparentFX

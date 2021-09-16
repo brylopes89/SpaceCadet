@@ -80,7 +80,7 @@ public class HealthBar_Controller : MonoBehaviour
         {
             _engineFill.color = _fillColor[1];
             _emission.rateOverTime = 75;
-            _velocityOL.speedModifier = 2.2f;
+            _velocityOL.speedModifier = 7f;
         }
 
         if (_engineHealthBar.value <= 34f)

@@ -50,11 +50,9 @@ MonoBehaviour:
   - {fileID: 6636935990302456278, guid: 2fea316b1c20c2f4782ab25842809e3c, type: 3}
   - {fileID: 1535281236308132432, guid: 42545cf7f18f1634986bdaebf9db35bb, type: 3}
   - {fileID: 6201330714069081873, guid: 82c76ede4622f8d4cba358a19556bee9, type: 3}
-  _asteroidPoolSize: 200
+  _asteroidPoolSize: 100
   _randomAsteroid: 
   _spawnRange: {x: 95.5, y: 78.11, z: 155}
   _speedRange: []
   _seed: 0
   _objects: []
-  _timeToSpawn: 10
-  _timeSinceSpawn: 0
