@@ -157,13 +157,13 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
         }
         else
         {            
-            _success = true;
-            _crystalController.CollectCrystals();
+            _success = true;            
             
             _numberCorrect++;
-
             StartCoroutine(RefillHealth());
         }
+
+        _crystalController.CollectCrystals();
     }
 
     private IEnumerator StartTimer()
@@ -192,18 +192,18 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
         if (_success)
         {
             _generatorAnim.SetTrigger("Success");
-            yield return new WaitForSeconds(.4f);
+            yield return new WaitForSeconds(.5f);
             _statusText.text = "CORRECT!";
         }
 
         else
         {
             _generatorAnim.SetTrigger("Fail");
-            yield return new WaitForSeconds(.4f);
+            yield return new WaitForSeconds(.5f);
             _statusText.text = "INCORRECT!";
         }
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(_generatorAnim.GetCurrentAnimatorStateInfo(0).length);
 
         ResetValues();
     }   
@@ -247,13 +247,18 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
         }
 
         yield return ActivateGenerator();
-
-        GameManager._instance.SaveGame();
-
-        if (_numberCorrect == _amountNeeded)        
+        
+        if (_numberCorrect == _amountNeeded)
+        {
+            GameManager._instance.ResetData();
             StartCoroutine(FadeOutLoader._instance.FadeOut("CrashLandingDepart"));
-        else             
+        }            
+        else
+        {
+            GameManager._instance.SaveGame();
             StartCoroutine(FadeOutLoader._instance.FadeOut("Field"));
+        }   
+            
     }
 
     public void AnswerInput(string _answer)

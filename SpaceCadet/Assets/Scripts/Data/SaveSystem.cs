@@ -62,8 +62,12 @@ public static class SaveSystem
     public static void RemoveFile()
     {
         string[] filePaths = Directory.GetFiles(Application.persistentDataPath);
-        foreach (string filePath in filePaths)
-            File.Delete(filePath);
+
+        if (filePaths == null || filePaths.Length == 0)
+            return;
+
+        //foreach (string filePath in filePaths)
+        //    File.Delete(filePath);
         File.Delete("SaveData.dat");
         Debug.Log("File Deleted");
     }

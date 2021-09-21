@@ -62,8 +62,7 @@ public class UnderAttack_Controller : MonoBehaviour
 
 
     void Start()
-    {
-        
+    {        
         _firstActivated = PlayerPrefs.GetInt("FirstActivated") == 1 ? true : false;
 
         if (_firstActivated)
@@ -74,10 +73,8 @@ public class UnderAttack_Controller : MonoBehaviour
         }
         else
         {
-            GameManager._instance.ResetData();
-        }
-
-        
+            PlayerPrefs.DeleteAll();            
+        }        
 
         _initiateNextSequence = true;
         _colorPanel = _timerDisplayText.gameObject.GetComponentInParent<Image>();

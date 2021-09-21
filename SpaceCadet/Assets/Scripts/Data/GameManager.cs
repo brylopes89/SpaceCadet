@@ -22,12 +22,14 @@ public class GameManager : MonoBehaviour, ISaveable
 
     private void OnApplicationQuit()
     {
-        ResetData();
+        PlayerPrefs.DeleteAll();
+        SaveSystem.RemoveFile();
+
     }
 
     public void ResetData()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         SaveSystem.RemoveFile();
         
     }
