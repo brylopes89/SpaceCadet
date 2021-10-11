@@ -160,7 +160,7 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
             _success = true;            
             
             _numberCorrect++;
-            StartCoroutine(RefillHealth());
+            StartCoroutine(ActivateGenerator());
         }
 
         _crystalController.CollectCrystals();
@@ -194,6 +194,8 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
             _generatorAnim.SetTrigger("Success");
             yield return new WaitForSeconds(.5f);
             _statusText.text = "CORRECT!";
+            yield return RefillHealth();
+            //StartCoroutine(RefillHealth());
         }
 
         else
@@ -201,11 +203,11 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
             _generatorAnim.SetTrigger("Fail");
             yield return new WaitForSeconds(.5f);
             _statusText.text = "INCORRECT!";
-        }
+            yield return new WaitForSeconds(_generatorAnim.GetCurrentAnimatorStateInfo(0).length);
+            ResetValues();
+        }        
 
-        yield return new WaitForSeconds(_generatorAnim.GetCurrentAnimatorStateInfo(0).length);
-
-        ResetValues();
+       
     }   
 
     public IEnumerator InitiateChase() 
@@ -228,6 +230,8 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
 
     private IEnumerator RefillHealth()
     {
+        //yield return ActivateGenerator();
+
         float i = 0.0f;
         float time = 4f;
         float rate = (1.0f / time) * 2f;
@@ -246,8 +250,8 @@ public class CrashLanding_Controller : MonoBehaviour, ISaveable
             yield return null;
         }
 
-        yield return ActivateGenerator();
-        
+        ResetValues();
+
         if (_numberCorrect == _amountNeeded)
         {
             GameManager._instance.ResetData();

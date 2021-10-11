@@ -18,8 +18,7 @@ public class Ship_Controller : MonoBehaviour
     public GameObject _largeExplosionPrefab;
     public GameObject _smallExplosionPrefab;
     public GameObject _smallLightningPrefab;
-
-    public AudioSource _shieldPowerUpSFX;
+    
     public AudioSource _shieldPowerDownSFX;
     public AudioSource _impactSFX;
     public AudioSource _smallExplosionSFX;
