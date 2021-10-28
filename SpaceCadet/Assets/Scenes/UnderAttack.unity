@@ -3971,7 +3971,7 @@ MonoBehaviour:
   _statusText: {fileID: 2095766672}
   _timerDisplayText: {fileID: 453401087}
   _answerButton: {fileID: 558855419}
-  _amountNeeded: 2
+  _amountNeeded: 10
   _numberCorrect: 0
   _initiateNextSequence: 0
   _success: 0
@@ -4911,6 +4911,7 @@ MonoBehaviour:
   mixerGroup: {fileID: 24300002, guid: 91061100e0c2b194ea272ff5b016dd1b, type: 2}
   exposedParam: MasterVol
   targetVolume: 0
+  muted: 0
 --- !u!4 &1895016182
 Transform:
   m_ObjectHideFlags: 0

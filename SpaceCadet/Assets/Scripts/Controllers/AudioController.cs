@@ -30,7 +30,7 @@ public class AudioController : MonoBehaviour
 
             PlayerPrefs.SetInt("MutedValue", muted ? 1 : 0);
 
-            StartCoroutine(StartFade());
+            //StartCoroutine(StartFade());
         }
     }
 
