@@ -21,16 +21,13 @@ public class AudioController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            muted = !muted;            
+            muted = !muted;
 
-            if (muted)
-                targetVolume = 0;
-            else
-                targetVolume = 1;
+            targetVolume = muted ? 0 : 1;
 
             PlayerPrefs.SetInt("MutedValue", muted ? 1 : 0);
 
-            //StartCoroutine(StartFade());
+            StartCoroutine(StartFade());
         }
     }
 

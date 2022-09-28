@@ -11,7 +11,7 @@ public class TimerDisplay : MonoBehaviour
     [SerializeField] private UnderAttack_Controller _underAttack;
 
     [HideInInspector]
-    public float _time;
+    public float _time = 21;
     [HideInInspector]
     public bool _startTimer = false;
 

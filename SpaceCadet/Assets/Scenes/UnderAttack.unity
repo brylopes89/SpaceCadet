@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c768c828f39d954dbc0194eb88cd32f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countDownTime: 7
+  _countDownTime: 21
   _countDownDisplay: {fileID: 453401087}
   _crashLanding: {fileID: 0}
   _underAttack: {fileID: 1559593193}

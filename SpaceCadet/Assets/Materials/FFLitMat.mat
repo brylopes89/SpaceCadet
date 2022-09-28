@@ -45,6 +45,6 @@ Material:
     - _Fill: 0.01
     m_Colors:
     - Color_09de6d115eb44699b374f9121aecc5c5: {r: 255, g: 0, b: 0, a: 1}
-    - Color_Emission: {r: 0.29803923, g: 2.9960785, b: 2.5882354, a: 0}
+    - Color_Emission: {r: 1.4980392, g: 0.8156863, b: 0.13333334, a: 0}
     - Vector2_7e51c726327f4407abdbc31c70bde055: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
